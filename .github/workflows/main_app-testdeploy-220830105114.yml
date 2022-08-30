@@ -26,7 +26,7 @@ jobs:
       - name: 'Restore Project Dependencies Using Mvn'
         shell: bash
         run: |
-         pushd --file pom.xml
+         pushd pom.xml
          mvn clean package
          mvn azure-functions:package
          popd
