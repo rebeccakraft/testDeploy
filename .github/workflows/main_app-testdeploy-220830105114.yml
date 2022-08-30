@@ -15,10 +15,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
-      - name: Print target directory
-        run: |
-          ls -la /home/runner/work/testDeploy/testDeploy/target/
 
       - name: Set up Java version
         uses: actions/setup-java@v1
@@ -33,6 +29,10 @@ jobs:
         with:
           name: java-app
           path: '${{ github.workspace }}/target/*.war'
+          
+      - name: Print target directory
+        run: |
+          ls -la /home/runner/work/testDeploy/testDeploy/target/
 
   deploy:
     runs-on: ubuntu-latest
