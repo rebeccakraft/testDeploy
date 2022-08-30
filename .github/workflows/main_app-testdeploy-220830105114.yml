@@ -12,6 +12,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      POM_XML_DIRECTORY: 'testDeploy/'  # set this to the directory which contains pom.xml file
 
     steps:
       - uses: actions/checkout@v2
@@ -21,8 +23,13 @@ jobs:
         with:
           java-version: '11'
 
-      - name: Build with Maven
-        run: mvn clean package --file pom.xml
+      - name: 'Restore Project Dependencies Using Mvn'
+        shell: bash
+        run: |
+         pushd './${{ env.POM_XML_DIRECTORY }}'
+         mvn clean package
+         mvn azure-functions:package
+         popd
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
