@@ -15,6 +15,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      
+      - name: Print target directory
+        run: |
+          ls -la /home/runner/work/testDeploy/testDeploy/target/
 
       - name: Set up Java version
         uses: actions/setup-java@v1
