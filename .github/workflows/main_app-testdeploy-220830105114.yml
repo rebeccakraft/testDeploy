@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      POM_XML_DIRECTORY: 'testDeploy/'  # set this to the directory which contains pom.xml file
+      POM_XML_DIRECTORY: '${{ github.workspace }}' # set this to the directory which contains pom.xml file
 
     steps:
       - uses: actions/checkout@v2
